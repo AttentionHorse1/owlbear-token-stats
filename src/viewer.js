@@ -226,10 +226,13 @@ removeButton.addEventListener("click", async () => {
 });
 
 // Przywrócenie szybszego okna Modal.
-document.querySelector("#close").addEventListener(
-  "click",
-  () => OBR.modal.close()
-);
+document.querySelector("#close").addEventListener("click", async () => {
+  try {
+    await OBR.modal.close("pl.rpg.token-stats/viewer");
+  } catch (error) {
+    console.error("Nie udało się zamknąć okna:", error);
+  }
+});
 
 OBR.onReady(async () => {
   await loadToken();
