@@ -3,7 +3,7 @@ import OBR from "@owlbear-rodeo/sdk";
 const EXTENSION_ID = "pl.rpg.token-stats";
 const SITE_BASE = "https://attentionhorse1.github.io/owlbear-token-stats/";
 
-// Ta strona pracuje w tle. Nie tworzy przycisku w lewym górnym rogu.
+// Rozszerzenie działa w tle, bez przycisku w lewym górnym rogu.
 OBR.onReady(async () => {
   await OBR.contextMenu.create({
     id: `${EXTENSION_ID}/context-menu`,
@@ -15,15 +15,15 @@ OBR.onReady(async () => {
         every: [{ key: "layer", value: "CHARACTER" }]
       }
     }],
-    async onClick(context, elementId) {
+    async onClick(context) {
       const token = context.items?.[0];
       if (!token) return;
-      await OBR.popover.open({
+
+      await OBR.modal.open({
         id: `${EXTENSION_ID}/viewer`,
         url: `${SITE_BASE}viewer.html?token=${encodeURIComponent(token.id)}`,
         width: 700,
-        height: 780,
-        anchorElementId: elementId
+        height: 780
       });
     }
   });
