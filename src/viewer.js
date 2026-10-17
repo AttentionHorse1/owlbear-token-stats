@@ -228,7 +228,7 @@ removeButton.addEventListener("click", async () => {
 // Przywrócenie szybszego okna Modal.
 document.querySelector("#close").addEventListener(
   "click",
-  () => OBR.modal.close(`${EXTENSION_ID}/viewer`)
+  () => OBR.modal.close()
 );
 
 OBR.onReady(async () => {
