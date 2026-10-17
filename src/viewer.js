@@ -226,13 +226,20 @@ removeButton.addEventListener("click", async () => {
 });
 
 // Przywrócenie szybszego okna Modal.
-document.querySelector("#close").addEventListener("click", async () => {
+document.querySelector("#close").addEventListener("click", async (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  alert("Kliknięcie X zostało wykryte!");
+
   try {
     await OBR.modal.close("pl.rpg.token-stats/viewer");
   } catch (error) {
-    console.error("Nie udało się zamknąć okna:", error);
+    console.error("Błąd zamykania:", error);
+    alert("Błąd zamykania: " + error.message);
   }
 });
+
 
 OBR.onReady(async () => {
   await loadToken();
