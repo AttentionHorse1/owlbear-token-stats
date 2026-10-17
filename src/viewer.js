@@ -147,7 +147,7 @@ removeButton.addEventListener("click", async () => {
   }
 });
 
-document.querySelector("#close").addEventListener("click", () => OBR.modal.close(`${EXTENSION_ID}/viewer`));
+document.querySelector("#close").addEventListener("click", () => OBR.popover.close(`${EXTENSION_ID}/viewer`));
 
 OBR.onReady(async () => {
   await loadToken();

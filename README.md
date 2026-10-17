@@ -28,3 +28,9 @@ Manifest: https://attentionhorse1.github.io/owlbear-token-stats/manifest.json
 Plik `index.html` działa wyłącznie w tle poprzez `background_url` manifestu (brak pola `action`, więc znika ikonka z panelu rozszerzeń). W tle rejestrowana jest pozycja menu kontekstowego. Kliknięcie otwiera `viewer.html` z identyfikatorem konkretnego tokena; ten widok umożliwia odczyt i edycję tego samego klucza metadanych: `pl.rpg.token-stats/image`.
 
 Projekt używa Vite z wieloma punktami wejścia (index.html + viewer.html), hostowanie przez GitHub Pages i wdrożenie GitHub Actions.
+
+
+## Eksperymentalny Popover
+Ta wersja zastępuje okno modalne panelem Popover, kotwiczonym przy przycisku menu kontekstowego. Nie zmienia formatu ani miejsca zapisu obrazków (Item Metadata). Nie ma gwarancji, że Owlbear automatycznie zamknie menu kontekstowe.
+
+Zmodyfikowano tylko `src/main.js` oraz `src/viewer.js`.

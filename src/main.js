@@ -15,20 +15,16 @@ OBR.onReady(async () => {
         every: [{ key: "layer", value: "CHARACTER" }]
       }
     }],
-    async onClick(context) {
+    async onClick(context, elementId) {
       const token = context.items?.[0];
       if (!token) return;
-
-      await OBR.modal.open({
+      await OBR.popover.open({
         id: `${EXTENSION_ID}/viewer`,
         url: `${SITE_BASE}viewer.html?token=${encodeURIComponent(token.id)}`,
         width: 700,
-        height: 780
+        height: 780,
+        anchorElementId: elementId
       });
-
-      // Po otwarciu okna odznaczamy token,
-      // aby zamknąć powiązane z nim menu kontekstowe.
-      await OBR.player.deselect([token.id]);
     }
   });
 });
