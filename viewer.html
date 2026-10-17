@@ -3,19 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Statystyki przeciwnika</title>
+  <title>Statystyki tokena</title>
 </head>
 <body class="viewer-body">
   <main class="viewer">
     <header class="viewer-head">
-      <div>
-        <div class="eyebrow">KARTA PRZECIWNIKA</div>
-        <h1 id="title">Statystyki</h1>
-      </div>
-      <button id="close" class="close" aria-label="Zamknij">×</button>
+      <div><div class="eyebrow">KARTA PRZECIWNIKA</div><h1 id="title">Statystyki</h1></div>
+      <button id="close" class="close" type="button" aria-label="Zamknij">×</button>
     </header>
-    <p id="empty" class="status" hidden>Ten token nie ma jeszcze przypisanego obrazka. Zaznacz token i użyj narzędzia „Statystyki tokenów”.</p>
-    <img id="statImage" alt="Przypisane statystyki przeciwnika" hidden />
+
+    <section id="imageSection" class="image-section" hidden>
+      <img id="statImage" alt="Przypisane statystyki przeciwnika" hidden />
+    </section>
+    <p id="empty" class="empty-message" hidden>Do tego tokena nie dodano jeszcze obrazka ze statystykami.</p>
+
+    <section class="editor-panel" aria-label="Dodawanie i usuwanie obrazka">
+      <h2 id="editorTitle">Dodaj lub zmień obrazek</h2>
+      <div id="pasteTarget" class="paste-target viewer-paste" tabindex="0" role="button" aria-label="Kliknij i wklej obrazek Ctrl+V">
+        <div class="paste-icon">↳</div>
+        <strong>Wklej obrazek: Ctrl+V</strong>
+        <span>Najpierw kliknij w tym polu. Możesz też wkleić obrazek bezpośrednio w oknie lub wybrać plik.</span>
+        <img id="preview" alt="Podgląd nowego obrazka" hidden />
+      </div>
+      <label class="file-label">
+        <input id="fileInput" type="file" accept="image/*" />
+        Wybierz obrazek z komputera
+      </label>
+      <div class="row">
+        <button id="save" type="button" class="primary" disabled>Zapisz obrazek</button>
+        <button id="remove" type="button" class="secondary" disabled>Usuń obecny obrazek</button>
+      </div>
+      <p id="status" class="status" aria-live="polite">Wczytuję token…</p>
+    </section>
+    <footer>Maksymalny rozmiar obrazka: 1 MB. Zmiany są zapisywane przy tokenie na mapie.</footer>
   </main>
   <script type="module" src="/src/viewer.js"></script>
 </body>

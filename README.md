@@ -1,43 +1,30 @@
-# Statystyki tokenów — rozszerzenie do Owlbear Rodeo
+# Statystyki tokenów — wersja 0.2.0
 
-Rozszerzenie pozwala przypisać obrazek ze statystykami do tokena, a potem otworzyć go z menu kontekstowego tokena. Interfejs jest po polsku.
+Rozszerzenie dla Owlbear Rodeo. **Cała obsługa znajduje się w menu kontekstowym tokena.**
 
-## Co robi ta wersja
+## Jak używać
 
-- W panelu rozszerzenia można wkleić obrazek ze schowka (`Ctrl+V`) lub wybrać plik graficzny.
-- Obrazek zapisuje się w metadanych wybranego tokena.
-- Po zaznaczeniu tokena kliknij prawym przyciskiem i wybierz „Pokaż statystyki”.
-- Obrazek można zastąpić lub usunąć.
+1. Kliknij prawym przyciskiem myszy token na warstwie CHARACTER (postać).
+2. Kliknij ikonę „Pokaż statystyki”.
+3. W oknie zobaczysz zapisany wcześniej obrazek albo komunikat, że go nie ma.
+4. Wklej nowy obrazek `Ctrl+V`, ewentualnie wybierz plik, a następnie kliknij „Zapisz obrazek”.
+5. Możesz wymienić obrazek na inny lub usunąć przyciskiem „Usuń obecny obrazek”.
 
-## Ograniczenia
+Obrazki zapisane we wcześniejszej wersji są kompatybilne: klucz metadanych się nie zmienił. Limit wynosi 1 MB na obrazek.
 
-- To pierwsza wersja testowa. Nie tworzy stale widocznej ikonki „i” na rogu tokena; otwieranie odbywa się przez menu kontekstowe.
-- Dla niezawodności używaj obrazków do 1 MB. Dane obrazu zapisują się w metadanych tokena, więc duże obrazy mogą zwiększać rozmiar danych sceny i spowalniać synchronizację.
-- Zapisane metadane synchronizują się w pokoju. Przed użyciem w grze sprawdź zachowanie w osobnym pokoju testowym i upewnij się, że taki sposób przechowywania odpowiada Twoim potrzebom.
+## Publikacja (to samo repozytorium)
 
-## Publikowanie na GitHub Pages
+Repozytorium: https://github.com/AttentionHorse1/owlbear-token-stats
 
-Repozytorium jest skonfigurowane dla adresu `https://attentionhorse1.github.io/owlbear-token-stats/`. Plik `public/manifest.json` jest kopiowany do gotowego folderu `dist` podczas budowania. Workflow GitHub Actions buduje projekt i publikuje go automatycznie po zmianach w gałęzi `main`.
+1. Zastąp zawartość istniejącego repozytorium plikami z tej paczki (zachowując strukturę katalogów i folder `.github`).
+2. Zrób commit/push na gałąź main.
+3. W GitHub → Actions sprawdź, czy workflow „Deploy to GitHub Pages” jest zielony.
+4. W Owlbear Rodeo odśwież kartę z pokojem; jeśli stara ikonka pozostaje, zamknij i otwórz pokój albo ponownie włącz rozszerzenie.
 
-1. Wgraj pliki projektu do głównego katalogu repozytorium `owlbear-token-stats` i zatwierdź je w gałęzi `main`.
-2. W GitHub otwórz **Settings → Pages**. W sekcji **Build and deployment** ustaw **Source: GitHub Actions**.
-3. Otwórz zakładkę **Actions** i sprawdź, czy workflow „Deploy to GitHub Pages” zakończył się powodzeniem.
-4. Sprawdź, czy manifest otwiera się pod adresem: `https://attentionhorse1.github.io/owlbear-token-stats/manifest.json`.
-5. W Owlbear Rodeo otwórz profil, wybierz **Add Extension** i wklej powyższy adres manifestu. Następnie włącz rozszerzenie w pokoju.
+Manifest: https://attentionhorse1.github.io/owlbear-token-stats/manifest.json
 
-## Test lokalny (opcjonalnie)
+## Technicznie
 
-Wymagany jest Node.js w wersji LTS. W katalogu projektu uruchom:
+Plik `index.html` działa wyłącznie w tle poprzez `background_url` manifestu (brak pola `action`, więc znika ikonka z panelu rozszerzeń). W tle rejestrowana jest pozycja menu kontekstowego. Kliknięcie otwiera `viewer.html` z identyfikatorem konkretnego tokena; ten widok umożliwia odczyt i edycję tego samego klucza metadanych: `pl.rpg.token-stats/image`.
 
-```bash
-npm install
-npm run dev
-```
-
-## Dokumentacja
-
-- https://docs.owlbear.rodeo/extensions/getting-started/
-- https://docs.owlbear.rodeo/extensions/apis/context-menu/
-- https://docs.owlbear.rodeo/extensions/apis/scene/items/
-- https://docs.owlbear.rodeo/extensions/apis/modal/
-- https://vite.dev/guide/static-deploy.html
+Projekt używa Vite z wieloma punktami wejścia (index.html + viewer.html), hostowanie przez GitHub Pages i wdrożenie GitHub Actions.
