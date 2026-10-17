@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statystyki tokenów</title>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="eyebrow">OWLBEAR RODEO · NARZĘDZIE MG</div>
+      <h1>Statystyki tokenów</h1>
+      <p class="intro">Przypnij obrazek ze schowka do zaznaczonego tokena, aby szybko otwierać go podczas walki.</p>
+    </header>
+    <section class="panel">
+      <div id="selection" class="selection">Sprawdzam zaznaczenie…</div>
+      <div id="pasteTarget" class="paste-target" tabindex="0" role="button" aria-label="Kliknij i wklej obrazek">
+        <div class="paste-icon">↳</div>
+        <strong>Kliknij tutaj, a następnie wklej obrazek</strong>
+        <span>Użyj Ctrl+V (Windows) lub ⌘V (Mac). Możesz też wybrać plik.</span>
+        <img id="preview" alt="Podgląd wklejonego obrazka" hidden />
+      </div>
+      <label class="file-label">
+        <input id="fileInput" type="file" accept="image/*" />
+        Wybierz obrazek z pliku
+      </label>
+      <div class="row">
+        <button id="save" class="primary" disabled>Zapisz przy tokenie</button>
+        <button id="remove" class="secondary" disabled>Usuń przypisany obrazek</button>
+      </div>
+      <p id="status" class="status" aria-live="polite">Najpierw zaznacz jeden token na mapie.</p>
+    </section>
+    <footer>Obrazki zapisują się w metadanych tokena i są synchronizowane w pokoju. Dla niezawodności używaj małych obrazków (zalecane do 1 MB).</footer>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statystyki przeciwnika</title>
+</head>
+<body class="viewer-body">
+  <main class="viewer">
+    <header class="viewer-head">
+      <div>
+        <div class="eyebrow">KARTA PRZECIWNIKA</div>
+        <h1 id="title">Statystyki</h1>
+      </div>
+      <button id="close" class="close" aria-label="Zamknij">×</button>
+    </header>
+    <p id="empty" class="status" hidden>Ten token nie ma jeszcze przypisanego obrazka. Zaznacz token i użyj narzędzia „Statystyki tokenów”.</p>
+    <img id="statImage" alt="Przypisane statystyki przeciwnika" hidden />
+  </main>
+  <script type="module" src="/src/viewer.js"></script>
+</body>
+</html>

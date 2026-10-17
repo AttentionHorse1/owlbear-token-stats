@@ -1,0 +1,22 @@
+{
+  "name": "Statystyki tokenów",
+  "version": "0.1.1",
+  "manifest_version": 1,
+  "description": "Przypinaj obrazki ze statystykami do tokenów i otwieraj je w trakcie sesji.",
+  "author": "AttentionHorse1",
+  "homepage_url": "https://github.com/AttentionHorse1/owlbear-token-stats",
+  "icon": "https://attentionhorse1.github.io/owlbear-token-stats/icon.svg",
+  "permissions": [
+    {
+      "name": "clipboard-read",
+      "reason": "Pozwala wkleić skopiowany obrazek do panelu rozszerzenia."
+    }
+  ],
+  "action": {
+    "title": "Statystyki tokenów",
+    "icon": "https://attentionhorse1.github.io/owlbear-token-stats/icon.svg",
+    "popover": "https://attentionhorse1.github.io/owlbear-token-stats/index.html",
+    "width": 420,
+    "height": 620
+  }
+}
