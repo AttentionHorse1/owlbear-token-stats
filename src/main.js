@@ -18,12 +18,17 @@ OBR.onReady(async () => {
     async onClick(context) {
       const token = context.items?.[0];
       if (!token) return;
+
       await OBR.modal.open({
         id: `${EXTENSION_ID}/viewer`,
         url: `${SITE_BASE}viewer.html?token=${encodeURIComponent(token.id)}`,
         width: 700,
         height: 780
       });
+
+      // Po otwarciu okna odznaczamy token,
+      // aby zamknąć powiązane z nim menu kontekstowe.
+      await OBR.player.deselect([token.id]);
     }
   });
 });
