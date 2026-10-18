@@ -230,8 +230,6 @@ document.querySelector("#close").addEventListener("click", async (event) => {
   event.preventDefault();
   event.stopPropagation();
 
-  alert("Kliknięcie X zostało wykryte!");
-
   try {
     await OBR.modal.close("pl.rpg.token-stats/viewer");
   } catch (error) {
